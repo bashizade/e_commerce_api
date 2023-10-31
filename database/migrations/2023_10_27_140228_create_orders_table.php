@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->bigInteger('address_id')->unsigned()->index();
+            $table->string('price');
             $table->string('code');
             $table->integer('status')->default(5);
             $table->timestamps();
