@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('login',[\App\Http\Controllers\Api\V1\AuthController::class,'login']);
 Route::post('register',[\App\Http\Controllers\Api\V1\AuthController::class,'register']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function (){
+    Route::prefix('article')->group(function (){
+        Route::get('',[\App\Http\Controllers\Api\V1\ArticleController::class,'articles']);
+        Route::get('{article}',[\App\Http\Controllers\Api\V1\ArticleController::class,'article']);
+        Route::post('create',[\App\Http\Controllers\Api\V1\ArticleController::class,'create']);
+        Route::put('update/{article}',[\App\Http\Controllers\Api\V1\ArticleController::class,'update']);
+        Route::delete('delete/{article}',[\App\Http\Controllers\Api\V1\ArticleController::class,'delete']);
+    });
 });

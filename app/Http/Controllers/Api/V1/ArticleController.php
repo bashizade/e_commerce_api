@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function Articles(): \Illuminate\Http\JsonResponse
+    public function articles(): \Illuminate\Http\JsonResponse
     {
         $articles = Article::query()->where('status',1)->get();
         return $this->ResponseRequest('success','',[$articles]);
     }
 
-    public function product(Article $article): \Illuminate\Http\JsonResponse
+    public function article(Article $article): \Illuminate\Http\JsonResponse
     {
         return $this->ResponseRequest('success','',[$article]);
     }
