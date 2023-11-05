@@ -47,4 +47,9 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::put('change_status',[\App\Http\Controllers\Api\V1\OrderController::class,'change_status']);
     });
 
+    Route::prefix('comment')->group(function (){
+        Route::get('',[\App\Http\Controllers\Api\V1\CommentController::class,'comments']);
+        Route::get('{product_id}',[\App\Http\Controllers\Api\V1\CommentController::class,'productComments']);
+        Route::put('change_status/{productComment}',[\App\Http\Controllers\Api\V1\CommentController::class,'change_status']);
+    });
 });
