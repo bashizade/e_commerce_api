@@ -41,4 +41,10 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::delete('delete',[\App\Http\Controllers\Api\V1\CartController::class,'delete']);
     });
 
+    Route::prefix('order')->group(function (){
+        Route::get('',[\App\Http\Controllers\Api\V1\OrderController::class,'all']);
+        Route::post('create',[\App\Http\Controllers\Api\V1\OrderController::class,'create']);
+        Route::put('change_status',[\App\Http\Controllers\Api\V1\OrderController::class,'change_status']);
+    });
+
 });
