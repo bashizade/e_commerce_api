@@ -25,4 +25,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::put('update/{article}',[\App\Http\Controllers\Api\V1\ArticleController::class,'update']);
         Route::delete('delete/{article}',[\App\Http\Controllers\Api\V1\ArticleController::class,'delete']);
     });
+
+    Route::prefix('product')->group(function (){
+        Route::get('',[\App\Http\Controllers\Api\V1\ProductController::class,'products']);
+        Route::get('{product}',[\App\Http\Controllers\Api\V1\ProductController::class,'product']);
+        Route::post('create',[\App\Http\Controllers\Api\V1\ProductController::class,'create']);
+        Route::put('update/{product}',[\App\Http\Controllers\Api\V1\ProductController::class,'update']);
+        Route::delete('delete/{product}',[\App\Http\Controllers\Api\V1\ProductController::class,'delete']);
+    });
 });
