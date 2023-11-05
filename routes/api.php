@@ -33,4 +33,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::put('update/{product}',[\App\Http\Controllers\Api\V1\ProductController::class,'update']);
         Route::delete('delete/{product}',[\App\Http\Controllers\Api\V1\ProductController::class,'delete']);
     });
+
+    Route::prefix('cart')->group(function (){
+        Route::get('',[\App\Http\Controllers\Api\V1\CartController::class,'index']);
+        Route::post('create',[\App\Http\Controllers\Api\V1\CartController::class,'add']);
+        Route::post('create',[\App\Http\Controllers\Api\V1\CartController::class,'remove']);
+        Route::delete('delete',[\App\Http\Controllers\Api\V1\CartController::class,'delete']);
+    });
+
 });
